@@ -1,0 +1,47 @@
+from tkinter import *
+
+
+def Add():
+    listbox.insert(END, entry.get())
+    entry.delete(0, END)
+
+
+def Delete():
+    select = list(listbox.curselection())
+    select.reverse()
+    for i in select:
+        listbox.delete(i)
+
+
+def Save():
+    return 0
+
+
+def on_selected(evt):
+    value = listbox.get(listbox.curselection())
+    output.delete(0, END)
+    output.insert('0', value)
+
+
+req = Tk()
+req.title("Программа - имя")
+req.geometry("450x180")
+
+listbox = Listbox(req)
+listbox.selectmode = EXTENDED
+listbox.pack(side=LEFT)
+listbox.bind('<<ListboxSelect>>', on_selected)
+
+f = Frame()
+f.pack(side=LEFT, padx=10)
+entry = Entry(f)
+entry.pack(anchor=N)
+
+output = Entry(req)
+output.pack(side=LEFT, padx=40)
+
+button_1 = Button(f, text="Добавить", command=Add).pack(fill=X)
+button_2 = Button(f, text="Удалить", command=Delete).pack(fill=X)
+button_3 = Button(f, text="Сохранить", command=Save).pack(fill=X)
+
+req.mainloop()
