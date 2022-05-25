@@ -27,6 +27,11 @@ req = Tk()
 req.title("Программа - имя")
 req.geometry("450x180")
 
+main_menu = Menu()
+main_menu.add_cascade(label="Файл")
+main_menu.add_cascade(label="Вид")
+main_menu.add_cascade(label="Справка")
+
 listbox = Listbox(req)
 listbox.selectmode = EXTENDED
 listbox.pack(side=LEFT)
@@ -44,4 +49,5 @@ button_1 = Button(f, text="Добавить", command=Add).pack(fill=X)
 button_2 = Button(f, text="Удалить", command=Delete).pack(fill=X)
 button_3 = Button(f, text="Сохранить", command=Save).pack(fill=X)
 
+req.config(menu=main_menu)
 req.mainloop()
