@@ -14,7 +14,8 @@ def Delete():
 
 
 def Save():
-    return 0
+    with open("hello.txt", "w") as file:
+        file.writelines(str(req))
 
 
 def on_selected(evt):
